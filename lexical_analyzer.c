@@ -146,6 +146,9 @@ void displaySymbolTable(SymbolTable s_arr[n]){
 int main(){
     FILE* fptr1;
     fptr1 = fopen("sample.c", "r");
+    if(fptr1 == NULL){
+        printf("File Doesnt Exist\n");
+    }
 
     char c = fgetc(fptr1);
     getNextToken(fptr1, c);
