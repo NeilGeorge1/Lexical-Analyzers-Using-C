@@ -1,0 +1,16 @@
+.section .data
+msg: .asciz "Hello, ARM64!\n"
+
+.section .text
+.global _start
+
+_start:
+    mov x0, 1         // stdout (file descriptor)
+    ldr x1, =msg      // Load address of msg
+    mov x2, 15        // Length of message
+    mov x8, 64        // syscall: write
+    svc 0             // Call kernel
+
+    mov x8, 93        // syscall: exit
+    mov x0, 0         // exit code 0
+    svc 0             // Call kernel
